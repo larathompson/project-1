@@ -1,0 +1,51 @@
+* {
+  box-sizing: border-box;
+}
+
+
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0;
+  background-image: radial-gradient(circle at center,#E8E8E8,#363843);
+}
+
+
+
+h1 {
+  color: transparent;
+   text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+button {
+  padding: 2px;
+  margin: 10px;
+}
+
+.grid {
+  display: flex;
+  flex-direction: row;
+  border: 2px solid black;
+  width: 600px;
+  height: 600px;
+  flex-wrap: wrap;
+}
+
+.cell {
+  width: 10%;
+  height: 10%;
+  border: 2px solid black;
+}
+
+.snake {
+  background-color: black;
+}
+
+.food {
+  background-color: red; 
+}
+
