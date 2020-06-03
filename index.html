@@ -1,22 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Snake</title>
   <link rel="stylesheet" href="styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
   <script src="scripts/app.js"></script>
 </head>
-<body>
-  <h1 > Snake </h1>
- 
+
+<body> 
+
+  <h1> Snake </h1>
+
+   <header class='score'>
+     <nav> 
+    <div  id='points'> Points: 0 </div>
+    <div id='lives'> Lives: 3 </div>
+  </nav>
+   </header>
+  
+
   <button id="start"> Play!</button>
+
   <div class="grid"></div>
+
+
+  <section class='endgame'>
+<h2 class='endgame'> Game Over! You scored: <span> 0 </span> points! </h2>
+<button class='endgame' id='endbutton'> Play again? </button>
+  </section>
+
 </body>
+
 </html>
-
-
-
-
-
-

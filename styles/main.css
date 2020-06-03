@@ -5,6 +5,7 @@
 
 
 body {
+  font-family: 'Monoton', cursive;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -17,35 +18,87 @@ body {
 
 
 h1 {
-  color: transparent;
+  font-size: 60px;
+  color: black;
    text-shadow: 0 0 5px rgba(0,0,0,0.5);
-}
+   margin: 100px 15px 15px 15px;
+   }
+
+   .score {
+
+    font-size: 20px;
+    padding: 10px;
+    border: 2px  solid black;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    
+   }
 
 button {
   padding: 2px;
-  margin: 10px;
+  margin: 20px;
+  font-family: 'Monoton', cursive;
+  width: 130px;
+  border: 2px solid black;
+  outline: none;
 }
 
 .grid {
   display: flex;
   flex-direction: row;
-  border: 2px solid black;
-  width: 600px;
+  border: 2px dashed black;
+  width: 605px;
   height: 600px;
   flex-wrap: wrap;
+  margin: 5px 30px 30px;
 }
 
 .cell {
   width: 10%;
   height: 10%;
-  border: 2px solid black;
+  border: 2px dashed black;
+}
+
+.endgame {
+  display: none;
+  font-size: 25px;
+  width: 600px;
+  padding: 10px;
+  
+}
+
+h2 {
+  display:none;
+  width: 250px;
+}
+
+#endbutton {
+  display: none;
+  width: 250px;
+  margin: auto;
+  justify-content: center;
 }
 
 .snake {
-  background-color: black;
+  background: repeating-linear-gradient(
+  45deg,
+  #606dbc,
+  #606dbc 10px,
+  #465298 10px,
+  #465298 20px
+);
 }
 
 .food {
-  background-color: red; 
+  background: repeating-linear-gradient(
+    45deg,
+    #a00d2d,
+    #a00d2d 10px,
+    #4d0218 10px,
+    #4d0218 20px
+  );
+
+
 }
 
