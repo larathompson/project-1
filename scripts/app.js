@@ -23,6 +23,7 @@ function setupGame() {
   const header = document.querySelector('header')
   const endOfGameText = document.querySelector('h2')
   const movingSquares = document.querySelectorAll('.square')
+  // const introMusic 
 
 
 
@@ -34,7 +35,8 @@ function setupGame() {
     DOWN: 'down'
   })
   let currentDirection = direction.NONE
-
+  
+  // introductionMusic()
   grid.style.display = 'none'
   header.style.display = 'none'
 
@@ -50,7 +52,7 @@ function setupGame() {
 
 
   playButton.addEventListener('click', () => {
-    // movingSquares.style.display = 'none'
+    // grid.style.transition = 'all 2s'
     grid.style.display = 'flex'
     header.style.display = 'flex'
     removeMovingSquares()
@@ -356,7 +358,10 @@ function setupGame() {
     }//end f functuo
 
 
-
+// function introductionMusic() {
+//   introMusic = new sound('MrKey_Glow-Remix_LMK.mp3')
+//   introMusic.play()
+// }
 
 
 
