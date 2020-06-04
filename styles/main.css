@@ -36,7 +36,7 @@ h1 {
     width: 200px;
     display: flex;
     justify-content: center;
-    animation: neonGlow 2s infinite alternate;
+    animation: neonGlow 2s infinite alternate; 
     
    }
 

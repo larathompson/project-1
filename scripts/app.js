@@ -23,7 +23,9 @@ function setupGame() {
   const header = document.querySelector('header')
   const endOfGameText = document.querySelector('h2')
   const movingSquares = document.querySelectorAll('.square')
-  // const introMusic 
+  const introMusic = document.querySelector('#intro')
+  const biteMusic = document.querySelector('#bite')
+  const lostMusic = document.querySelector('#lostLife')
 
 
 
@@ -35,11 +37,12 @@ function setupGame() {
     DOWN: 'down'
   })
   let currentDirection = direction.NONE
-  
-  // introductionMusic()
+
+
   grid.style.display = 'none'
   header.style.display = 'none'
 
+  
 
 
   //make the grid 10 x 10 
@@ -52,7 +55,7 @@ function setupGame() {
 
 
   playButton.addEventListener('click', () => {
-    // grid.style.transition = 'all 2s'
+    introductionMusic()   
     grid.style.display = 'flex'
     header.style.display = 'flex'
     removeMovingSquares()
@@ -233,6 +236,7 @@ function setupGame() {
     function growSnake() {
 
       if (snakePositions[snakePositions.length - 1] === foodPosition) {
+        playBiteMusic()
         pointCount += 100
         points.innerHTML = 'Points: ' + pointCount
         cells[foodPosition].classList.remove('food')
@@ -297,6 +301,7 @@ function setupGame() {
     }
 
     function liveReset() {
+      playLostMusic()
       liveCount -= 1
       lives.innerHTML = 'Lives: ' + liveCount
       snakePositions = [44, 45, 46]
@@ -358,10 +363,17 @@ function setupGame() {
     }//end f functuo
 
 
-// function introductionMusic() {
-//   introMusic = new sound('MrKey_Glow-Remix_LMK.mp3')
-//   introMusic.play()
-// }
+    function introductionMusic() {
+      introMusic.play()
+    }
+
+    function playBiteMusic() {
+      biteMusic.play()
+    }
+
+    function playLostMusic() {
+      lostMusic.play()
+    }
 
 
 
@@ -371,6 +383,18 @@ function setupGame() {
 
 
   })
+
+  // function introductionMusic() {
+  //   // introMusic.src = 'MrKey_Glow-Remix_LMK.mp3'
+  //   introMusic.play()
+  // }
+
+  // function playBiteMusic() {
+  //   // introMusic.src = 'MrKey_Glow-Remix_LMK.mp3'
+  //   biteMusic.play()
+
+  // }
+
 
 
 }
