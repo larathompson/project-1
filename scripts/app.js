@@ -22,6 +22,9 @@ function setupGame() {
   let liveCount = 3
   const header = document.querySelector('header')
   const endOfGameText = document.querySelector('h2')
+  const movingSquares = document.querySelectorAll('.square')
+
+
 
   const direction = Object.freeze({
     NONE: 'none',
@@ -31,6 +34,10 @@ function setupGame() {
     DOWN: 'down'
   })
   let currentDirection = direction.NONE
+
+  grid.style.display = 'none'
+  header.style.display = 'none'
+
 
 
   //make the grid 10 x 10 
@@ -43,6 +50,14 @@ function setupGame() {
 
 
   playButton.addEventListener('click', () => {
+    // movingSquares.style.display = 'none'
+    grid.style.display = 'flex'
+    header.style.display = 'flex'
+    removeMovingSquares()
+    playButton.style.display = 'none'
+
+
+
     if (playing) return
     playing = true
 
@@ -64,15 +79,15 @@ function setupGame() {
           snakeInterval = setInterval(() => {
             if (snakeHead < width && liveCount === 1) {
               endGame()
-              clearInterval(snakeInterval) 
-              
+              clearInterval(snakeInterval)
+
               return
             } else if (snakeHead < width && liveCount > 1) {
               liveReset()
               renderGame()
               resetSpeed()
               clearInterval(snakeInterval)
-              
+
 
             } else {
               snakeUp()
@@ -95,7 +110,7 @@ function setupGame() {
               renderGame()
               resetSpeed()
               clearInterval(snakeInterval)
-              
+
 
             } else {
               snakeDown()
@@ -119,7 +134,7 @@ function setupGame() {
               renderGame()
               resetSpeed()
               clearInterval(snakeInterval)
-            
+
             } else {
               snakeRight()
               growSnake()
@@ -142,7 +157,7 @@ function setupGame() {
               renderGame()
               resetSpeed()
               clearInterval(snakeInterval)
-              
+
             } else {
               snakeLeft()
               growSnake()
@@ -303,7 +318,42 @@ function setupGame() {
     }
 
 
+    function removeMovingSquares() {
 
+
+      const sq1 = document.querySelector('#square1')
+      sq1.style.display = 'none'
+
+      const sq2 = document.querySelector('#square2')
+      sq2.style.display = 'none'
+
+      const sq3 = document.querySelector('#square3')
+      sq3.style.display = 'none'
+
+      const sq4 = document.querySelector('#square4')
+      sq4.style.display = 'none'
+
+      const sq5 = document.querySelector('#square5')
+      sq5.style.display = 'none'
+
+
+      const sq6 = document.querySelector('#square6')
+      sq6.style.display = 'none'
+
+
+      const sq7 = document.querySelector('#square7')
+      sq7.style.display = 'none'
+
+      const sq8 = document.querySelector('#square8')
+      sq8.style.display = 'none'
+
+      const sq9 = document.querySelector('#square9')
+      sq9.style.display = 'none'
+
+      const sq10 = document.querySelector('#square10')
+      sq10.style.display = 'none'
+
+    }//end f functuo
 
 
 

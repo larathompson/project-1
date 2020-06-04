@@ -3,7 +3,6 @@
 }
 
 
-
 body {
   font-family: 'Monoton', cursive;
   height: 100vh;
@@ -12,26 +11,32 @@ body {
   align-items: center;
   flex-direction: column;
   margin: 0;
-  background-image: radial-gradient(circle at center,#E8E8E8,#363843);
+  background: black;
+  /* background-image: radial-gradient(circle at center,#E8E8E8,#363843); */
 }
 
 
 
 h1 {
-  font-size: 60px;
-  color: black;
+  font-size:6em;
+  color: white;
    text-shadow: 0 0 5px rgba(0,0,0,0.5);
    margin: 100px 15px 15px 15px;
+   font-family: 'Dosis', Helvetica, Arial, sans-serif;
+  font-weight:600; 
+   animation: neonGlow 2s infinite alternate 
    }
 
    .score {
 
     font-size: 20px;
     padding: 10px;
-    border: 2px  solid black;
+    /* border: 2px  solid white; */
+    border: none;
     width: 200px;
     display: flex;
     justify-content: center;
+    animation: neonGlow 2s infinite alternate;
     
    }
 
@@ -47,7 +52,7 @@ button {
 .grid {
   display: flex;
   flex-direction: row;
-  border: 2px dashed black;
+  border: 2px dashed white;
   width: 605px;
   height: 600px;
   flex-wrap: wrap;
@@ -57,7 +62,7 @@ button {
 .cell {
   width: 10%;
   height: 10%;
-  border: 2px dashed black;
+  border: 2px dashed white;
 }
 
 .endgame {
@@ -81,13 +86,19 @@ h2 {
 }
 
 .snake {
-  background: repeating-linear-gradient(
+  /* background: repeating-linear-gradient(
   45deg,
   #606dbc,
   #606dbc 10px,
   #465298 10px,
   #465298 20px
-);
+); */
+ background-color: #fff;
+    box-shadow:
+        0 0 6px 3px #fff,  /* inner white */
+        0 0 10px 6px #f0f, /* middle magenta */
+        0 0 14px 9px #0ff;  
+
 }
 
 .food {
@@ -98,7 +109,91 @@ h2 {
     #4d0218 10px,
     #4d0218 20px
   );
-
-
 }
 
+
+
+
+
+
+.square {
+
+  display: block;
+  position: absolute;     
+  width: 30px;
+  height: 30px;
+  border-radius: 1%;
+  background-color: black;
+}  
+
+#square1 {
+  animation: track 2s linear infinite;
+}
+#square2 {
+  animation: track 2.01s linear infinite;
+}
+#square3 {
+  animation: track 2.02s linear infinite;
+} 
+#square4 {
+  animation: track 2.03s linear infinite;
+} 
+#square5 {
+  animation: track 2.04s linear infinite;
+} 
+#square6 {
+  animation: track 2.05s linear infinite;
+} 
+#square7 {
+  animation: track 2.06s linear infinite;
+}
+#square8 {
+  animation: track 2.07s linear infinite;
+}
+#square9 {
+  animation: track 2.08s linear infinite;
+} 
+#square10 {
+  animation: track 2.09s linear infinite;
+} 
+
+/* animations */
+
+@keyframes track {
+  
+  0%   {background-color:red; left:20%; top:10%;}
+  25%  {background-color:yellow; left:80%; top:10%;}
+  50%  {background-color:blue; left:80%; top:90%;}
+  75%  {background-color:green; left:20%; top:90%;}
+  100% {background-color:red; left:20%; top:10%;}
+}
+
+@keyframes neonGlow {
+  0% {
+    text-shadow: 0 0 10px rgba(255,255,255,.8),
+                 0 0 20px rgba(255,255,255,.8),
+                 0 0 22px  rgba(255,255,255,.8),
+                 0 0 40px  rgba(66,220,219,.8),
+                 0 0 60px  rgba(66,220,219,.8),
+                 0 0 80px  rgba(66,220,219,.5),
+                 0 0 100px rgba(66,220,219,.5),
+                 0 0 140px rgba(66,220,219,.5),
+                 0 0 200px rgba(66,220,219,.5);
+  }
+  100% {
+    text-shadow: 0 0 2px rgba(255,255,255,.8),
+                 0 0 8px rgba(255,255,255,.8),
+                 0 0 10px rgba(255,255,255,.8),
+                 0 0 20px rgba(66,220,219,.8),
+                 0 0 30px rgba(66,220,219,.8),
+                 0 0 40px rgba(66,220,219,.8),
+                 0 0 50px rgba(66,220,219,.5),
+                 0 0 80px rgba(66,220,219,.5);
+  }
+}
+
+
+
+
+
+ 
