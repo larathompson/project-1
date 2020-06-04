@@ -1,6 +1,7 @@
 function setupGame() {
 
   const grid = document.querySelector('.grid')
+  // const width = 10 ORIGINAL
   const width = 10
   const cells = []
   let snakePositions = [44, 45, 46]
@@ -13,7 +14,7 @@ function setupGame() {
   const final2difference = snakePositions[1] - snakePositions[0]
   // let direction = 'goingRight' //need to set a default for moving snakes right
   let snakeInterval
-  let speed = 1000
+  let speed = 800
   let playing = false
   let EventListenersActivated = false
   const points = document.querySelector('#points')
@@ -26,6 +27,7 @@ function setupGame() {
   const introMusic = document.querySelector('#intro')
   const biteMusic = document.querySelector('#bite')
   const lostMusic = document.querySelector('#lostLife')
+  const cheer = document.querySelector('#cheer')
 
 
 
@@ -55,7 +57,7 @@ function setupGame() {
 
 
   playButton.addEventListener('click', () => {
-    introductionMusic()   
+    // introductionMusic()   
     grid.style.display = 'flex'
     header.style.display = 'flex'
     removeMovingSquares()
@@ -159,6 +161,7 @@ function setupGame() {
               return
             } else if (snakeHead % 10 === 0 && liveCount > 1) {
               liveReset()
+              
               renderGame()
               resetSpeed()
               clearInterval(snakeInterval)
@@ -255,7 +258,7 @@ function setupGame() {
     }
 
     function resetSpeed() {
-      speed = 1000
+      speed = 800
     }
 
 
@@ -276,20 +279,24 @@ function setupGame() {
     // END GAME
     function endGame() {
       hideGridshowScore()
+      introMusic.pause()
+      
+      playCheerMusic()
 
       playAgainButton.addEventListener('click', () => {
 
         grid.style.display = 'flex' //show grid
         header.style.display = 'block'
         playButton.style.display = 'block'
-        endgame.style.display = 'none'
+        // endgame.style.display = 'none'
+        endgame.style.display = 'block'
         playAgainButton.style.display = 'none'
         endOfGameText.style.display = 'none'
         pointCount = 0
         points.innerHTML = 'Points: ' + pointCount
         liveCount = 3
         lives.innerHTML = 'Lives: ' + liveCount
-        speed = 500
+        speed = 800
         snakePositions = [44, 45, 46]
         snakeHead = snakePositions[snakePositions.length - 1]
         currentDirection = direction.NONE
@@ -301,13 +308,14 @@ function setupGame() {
     }
 
     function liveReset() {
-      playLostMusic()
       liveCount -= 1
       lives.innerHTML = 'Lives: ' + liveCount
       snakePositions = [44, 45, 46]
       snakeHead = snakePositions[snakePositions.length - 1]
       currentDirection = direction.NONE
+      playLostMusic()
     }
+
     function hideGridshowScore() {
       cells.forEach((cell) => {
         cell.classList.remove('snake') //remove the snake
@@ -364,6 +372,7 @@ function setupGame() {
 
 
     function introductionMusic() {
+      introMusic.currentTime = 0
       introMusic.play()
     }
 
@@ -373,6 +382,10 @@ function setupGame() {
 
     function playLostMusic() {
       lostMusic.play()
+    }
+
+    function playCheerMusic() {
+      cheer.play()
     }
 
 

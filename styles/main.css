@@ -24,7 +24,7 @@ h1 {
    margin: 100px 15px 15px 15px;
    font-family: 'Dosis', Helvetica, Arial, sans-serif;
   font-weight:600; 
-   animation: neonGlow 2s infinite alternate 
+   animation: neonGlow 0.2s infinite alternate 
    }
 
    .score {
@@ -36,7 +36,7 @@ h1 {
     width: 200px;
     display: flex;
     justify-content: center;
-    animation: neonGlow 2s infinite alternate; 
+    animation: neonGlow 0.2s infinite alternate; 
     
    }
 
@@ -63,7 +63,9 @@ button {
 
 .cell {
   width: 10%;
+  /* width: 5%; */
   height: 10%;
+  /* height: 5%; */
   border: 2px dashed white;
 }
 
@@ -73,11 +75,13 @@ button {
   width: 600px;
   padding: 10px;
   
+  
 }
 
 h2 {
   display:none;
   width: 250px;
+  color: white;
 }
 
 #endbutton {
@@ -171,7 +175,7 @@ h2 {
   100% {background-color:red; left:20%; top:10%;}
 }
 
-@keyframes neonGlow {
+/* @keyframes neonGlow {
   0% {
     text-shadow: 0 0 10px rgba(255,255,255,.8),
                  0 0 20px rgba(255,255,255,.8),
@@ -191,6 +195,31 @@ h2 {
                  0 0 30px rgba(66,220,219,.8),
                  0 0 40px rgba(66,220,219,.8),
                  0 0 50px rgba(66,220,219,.5),
+                 0 0 80px rgba(66,220,219,.5);
+  }
+} */
+
+
+@keyframes neonGlow {
+  0% {
+    text-shadow: 0 0 10px rgba(255,255,255,.8),
+                 
+                 0 0 22px  rgba(255,255,255,.8),
+                 
+                 0 0 60px  rgba(66,220,219,.8),
+                
+                 0 0 100px rgba(66,220,219,.5),
+                 
+                 0 0 200px rgba(66,220,219,.5);
+  }
+  100% {
+    text-shadow: 0 0 2px rgba(255,255,255,.8),
+                
+                 0 0 10px rgba(255,255,255,.8),
+                 
+                 0 0 30px rgba(66,220,219,.8),
+                 
+                 
                  0 0 80px rgba(66,220,219,.5);
   }
 }
