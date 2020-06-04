@@ -57,7 +57,7 @@ function setupGame() {
 
 
   playButton.addEventListener('click', () => {
-    // introductionMusic()   
+    introductionMusic()   
     grid.style.display = 'flex'
     header.style.display = 'flex'
     removeMovingSquares()
@@ -313,6 +313,7 @@ function setupGame() {
       snakePositions = [44, 45, 46]
       snakeHead = snakePositions[snakePositions.length - 1]
       currentDirection = direction.NONE
+      clearInterval(snakeInterval)
       playLostMusic()
     }
 
