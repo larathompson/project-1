@@ -18,16 +18,27 @@ Snake is a single-player game where the player earns points by guiding the snake
 
 The aim of the game is to stay alive as long as possible.
 
-Requirements
+# Technical Requirements
+
+The app must: 
+- Render a game in the browser
+- Design logic for winning and visually display which player won
+- Include separate HTML / CSS / JavaScript files
+- Stick with KISS (Keep It Simple Stupid) and DRY (Don't Repeat Yourself) principles
+- Use JavaScript for DOM manipulation
+- Deploy your game online where the rest of the world can access it
+- Use semantic markup for the HTML and CSS 
+
+# Game-specific Requirements
 
 * The snake should be able to eat food to grow bigger
 * The game should end when the snake hits the wall or itself
 * Snake speeds up as it eats more
 
-## Technologies Used
+# Technologies Used
 
 - HTML
-- Javascript
+- Javascript (ES6)
 - CSS
 - CSS Animations
 - Google Fonts
@@ -36,6 +47,111 @@ Requirements
 - Git and GitHub
 
 # Approach
+
+## Choosing to Play
+
+When the player initially loads the page, the grid is hidden and a clickable button gives the user the option to play the game. On this page, I created a neon-glow effect by using animations and shadows in CSS to give the effect of the words pulsating on the page. Additionally, to create the effect of a snake moving and following each other around the page, I created animated divs which moved around the page for different durations. Although I thought the imapct of this was visually effective, on reflection, I would have thought of a more efficent way to design this animation. 
+
+![loadingPage](project-1/load.png)
+
+```
+#square1 {
+  animation: track 2s linear infinite;
+}
+#square2 {
+  animation: track 2.01s linear infinite;
+}
+#square3 {
+  animation: track 2.02s linear infinite;
+} 
+#square4 {
+  animation: track 2.03s linear infinite;
+} 
+#square5 {
+  animation: track 2.04s linear infinite;
+} 
+#square6 {
+  animation: track 2.05s linear infinite;
+} 
+#square7 {
+  animation: track 2.06s linear infinite;
+}
+#square8 {
+  animation: track 2.07s linear infinite;
+}
+#square9 {
+  animation: track 2.08s linear infinite;
+} 
+#square10 {
+  animation: track 2.09s linear infinite;
+} 
+
+/* animations */
+
+@keyframes track {
+  
+  0%   {background-color:red; left:20%; top:10%;}
+  25%  {background-color:yellow; left:80%; top:10%;}
+  50%  {background-color:blue; left:80%; top:90%;}
+  75%  {background-color:green; left:20%; top:90%;}
+  100% {background-color:red; left:20%; top:10%;}
+}
+
+
+@keyframes neonGlow {
+   0% {
+    text-shadow: 0px 0px 9px #0097e8, 0px 0px 15px #f50abe, 0px 0px 5px #f50abe;
+  }
+  85% {
+    text-shadow: 0px 0px 9px #0097e8, 0px 0px 15px #f50abe, 0px 0px 5px #0097e8;
+  }
+} 
+```
+
+When the player clicked the play button, this animation stopped, the grid appeared and the music started playing. Additionally, the boolean value of playing, whcih was initally set to false (`let playing = false`) changes to be set to `true`. This was used to ensure that the play button could not be pressed twice, as if playing was already true, it would return before executing the subsequent code. 
+
+```
+playButton.addEventListener('click', () => {
+    introductionMusic()   
+    grid.style.display = 'flex'
+    header.style.display = 'flex'
+    removeMovingSquares()
+    playButton.style.display = 'none'
+
+
+
+    if (playing) return
+    playing = true
+
+```
+
+## The Grid 
+
+The game is played on a grid. To maximise efficiency whilst making this grid, I used HTML create 10 divs (for each cell of the grid), then a I used a JavaScript `for` loop to populate the DOM with a 10 x 10 grid comprised of cells, each of which were 10% of the grid height and width and styled with CSS. Each cell has an index value between 0-99 - this meant I could access the positions of the snake and the food. 
+
+```
+for (let i = 0; i < width ** 2; i++) {
+    const div = document.createElement('div')
+    div.classList.add('cell')
+    grid.appendChild(div)
+    cells.push(div)
+  }
+```
+
+
+
+At the start of the game, the snake is positioned in the center of the grid (` let snakePositions = [44, 45, 46]`). The direction in which the snake moves is stored in a object - this was necessary to ensure that specific event listeners were activated/ deactivated given the direction that the snake was moving in (eg. you can only press the left/right arrow key when the snake is moving up/down).
+
+```
+ const direction = Object.freeze({
+    NONE: 'none',
+    LEFT: 'left',
+    RIGHT: 'right',
+    UP: 'up',
+    DOWN: 'down'
+  })
+  let currentDirection = direction.NONE
+```
 
 Firstly, I defined all variables that I would be using in the Javascript. Most variables defined used the 'document.querySelector' in order to get them from the index.html file. I also set some variables to Boolean values, this meant that later on in the game, I could ensure the game was only started once. I also used 'let' when defining some variables as this meant that later, I was able to reassign them. Additionally, I chose to store the direction that the snake was moving in an object - this meant that I could easily identify which way the snake was moving and meant that only certain event listeneners were activated depending on which way the snake was moving (eg. you can only press the left/right arrow key when the snake is moving up/down). 
 
