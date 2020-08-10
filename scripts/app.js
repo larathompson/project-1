@@ -249,7 +249,7 @@ function setupGame() {
         showRandomFood()
       }
     }
-    growSnake()
+    // growSnake()
 
 
     //change the speeds *********
@@ -398,17 +398,7 @@ function setupGame() {
 
   })
 
-  // function introductionMusic() {
-  //   // introMusic.src = 'MrKey_Glow-Remix_LMK.mp3'
-  //   introMusic.play()
-  // }
-
-  // function playBiteMusic() {
-  //   // introMusic.src = 'MrKey_Glow-Remix_LMK.mp3'
-  //   biteMusic.play()
-
-  // }
-
+  
 
 
 }
