@@ -4,7 +4,7 @@
 
 # Overview
 
-This is the first project that I completed on the software enginnering immersive course at GA, London. The aim of the task was to interact with the DOM, incorporating the CSS, HTML and JavaScipt skills we had learnt to create a grid-based game. The game had to be completed independently over the course of a week.
+This is the first project that I completed on the software enginnering immersive course at GA, London. The aim of the task was to interact with the DOM, incorporating the CSS, HTML and JavaScript skills we had learnt to create a grid-based game. The game had to be completed independently over the course of a week.
 
 Given the list of archaic games, I chose to build Snake. The neon design and music chosen aims to make the game feel fun and exciting when played. 
 
@@ -50,9 +50,11 @@ The app must:
 
 ## Choosing to Play
 
-When the player initially loads the page, the grid is hidden and a clickable button gives the user the option to play the game. On this page, I created a neon-glow effect by using animations and shadows in CSS to give the effect of the words pulsating on the page. Additionally, to create the effect of a snake moving and following each other around the page, I created animated divs which moved around the page for different durations. Although I thought the imapct of this was visually effective, on reflection, I would have thought of a more efficent way to design this animation. 
+When the player initially loads the page, the grid is hidden and a clickable button gives the user the option to play the game. On this page, I created a neon-glow effect by using animations and shadows in CSS to give the effect of the words pulsating on the page. Additionally, to create the effect of a snake moving and following each other around the page, I created animated divs which moved around the page for different durations. Although I thought the impact of this was visually effective, on reflection, I would have thought of a more efficent way to design this animation. 
 
-![loadingPage](project-1/load.png)
+
+![loadingPage](../load.png)
+
 
 ```
 #square1 {
@@ -108,7 +110,7 @@ When the player initially loads the page, the grid is hidden and a clickable but
 } 
 ```
 
-When the player clicked the play button, this animation stopped, the grid appeared and the music started playing. Additionally, the boolean value of playing, whcih was initally set to false (`let playing = false`) changes to be set to `true`. This was used to ensure that the play button could not be pressed twice, as if playing was already true, it would return before executing the subsequent code. 
+When the player clicked the play button, this animation stopped, the grid appeared, the music started playing and the lives/points board apeared. Additionally, the boolean value of playing, whcih was initally set to false (`let playing = false`) changes to be set to `true`. This was used to ensure that the play button could not be pressed twice, as if playing was already true, it would return before executing the subsequent code. 
 
 ```
 playButton.addEventListener('click', () => {
@@ -125,9 +127,13 @@ playButton.addEventListener('click', () => {
 
 ```
 
+![playingPage](../play.png)
+
+
+
 ## The Grid 
 
-The game is played on a grid. To maximise efficiency whilst making this grid, I used HTML create 10 divs (for each cell of the grid), then a I used a JavaScript `for` loop to populate the DOM with a 10 x 10 grid comprised of cells, each of which were 10% of the grid height and width and styled with CSS. Each cell has an index value between 0-99 - this meant I could access the positions of the snake and the food. 
+The game is played on a grid. To maximise efficiency whilst making this grid, I used HTML create 10 divs (for each cell of the grid), then a I used a JavaScript `for` loop to populate the DOM with a 10 x 10 grid comprised of cells. Each of these cells were 10% of the grid height and width and styled with CSS. Each cell has an index value between 0-99 - this meant I could access the positions of the snake and the food which was necessary to determine the games functionality. 
 
 ```
 for (let i = 0; i < width ** 2; i++) {
@@ -140,7 +146,7 @@ for (let i = 0; i < width ** 2; i++) {
 
 
 
-At the start of the game, the snake is positioned in the center of the grid (` let snakePositions = [44, 45, 46]`). The direction in which the snake moves is stored in a object - this was necessary to ensure that specific event listeners were activated/ deactivated given the direction that the snake was moving in (eg. you can only press the left/right arrow key when the snake is moving up/down).
+At the start of the game, the position of the snake on the grid was represented using an array (` let snakePositions = [44, 45, 46]`) and the snake's movement is controlled by the user pressing the arrow keys. The direction in which the snake moves is stored in a object - this was necessary to ensure that specific event listeners were activated/ deactivated given the direction that the snake was moving in (eg. you can only press the left/right arrow key when the snake is moving up/down). I used the `forEach` method on the array of the snake positions, adding a class to them which demonstrated to the player where the snake was. 
 
 ```
  const direction = Object.freeze({
@@ -153,31 +159,8 @@ At the start of the game, the snake is positioned in the center of the grid (` l
   let currentDirection = direction.NONE
 ```
 
-Firstly, I defined all variables that I would be using in the Javascript. Most variables defined used the 'document.querySelector' in order to get them from the index.html file. I also set some variables to Boolean values, this meant that later on in the game, I could ensure the game was only started once. I also used 'let' when defining some variables as this meant that later, I was able to reassign them. Additionally, I chose to store the direction that the snake was moving in an object - this meant that I could easily identify which way the snake was moving and meant that only certain event listeneners were activated depending on which way the snake was moving (eg. you can only press the left/right arrow key when the snake is moving up/down). 
-
-
-# Game Set-Up
-Initially, I used a font which I imported from Google Fonts and used Neon Glow CSS effects. To make the effect stand out, I used white text with a shadow and an animation (animation: neonGlow 0.2s infinite alternate) in order to make it look like it was pulsating on the page. 
-
-I also wanted to build of the theme of snake and so designed squares which were animated to move around the page whilst the user was choosing to play the game. In order to get the squares to follow each other , I made 'divs' for each of the squares and gave them the same animation, however, they each had a slightly different duration. If I were to do this project again, I would use a more efficient method to design this animation. (MAYBE I COULD USE THE METHOD THAT I MADE THE GRID IN AND THEN USE THE CSS ANIMATIONS TO FOCUS ON THE NTH CHILD ETC TO GIVE EACH ONE A DIFFERENT ANIMATION)
-
-
-
-In order to get the start game/play again page, I used the DOM. The 'play button' had an event listener and when clicked by the user, the game music started playing, the grid transitioned into appearing, the lives and points board appeared, the moving squares animation disappeared and the boolean value of playing changed from false to true (this meant that the play button could not be clicked twice). 
-
-In order to make the grid, I used a 'for' loop - this was more efficient than making each of the divs individually in HTML. For each of the divs I added the class of 'cell' - this styled the grid so that each cell had a white dashed border and was 10% of the grid in height and width (10 x 10 grid). 
-
-
-
-for (let i = 0; i < width ** 2; i++) {
-    const div = document.createElement('div')
-    div.classList.add('cell')
-    grid.appendChild(div)
-    cells.push(div)
-  }
-
-At the start of the game, the location of the snake was represented by an array which located the snake centrally on the board (let snakePositions = [44, 45, 46]). In future, I would use a different formula to position the snakes so that they would be positioned centrally no matter what the the size of the board was. These snake positions are updated in response to the event listeners on the arrow keys. The location of food is randomely generated on the board using the following function: 
-
+Additionally, a piece of 'food' appeared on the board each time the game was started or a game was lost - the aim of the game was for the snake to 'eat' this food by having the snakes 'head' (the final cell value of the snake positions array) to be the same as the food. The use of this `while loop` ensures that the food position could not be the same as the snake position - if it was, a new food position had to be generated and only then, could the classList of food be added (this set the cell to green, representing a piece of food)
+```
 function showRandomFood() {
       foodPosition = Math.floor(Math.random() * cells.length)
       while (snakePositions.indexOf(foodPosition) !== -1) {
@@ -186,15 +169,14 @@ function showRandomFood() {
 
       cells[foodPosition].classList.add('food')
     }
-
-    The function above randomely selected a cell from the 100 cells on the grid. I used a while loop to ensure that the food position was only getting set while the snake position was not the same as the food position - if it was, a new food position had to be generated and only then, could the classList of food be added (this set the cell to green). I thought that the while loop was the best option for this as it meant that if food was continoulsy generated within the snake positions, it would continue to generate new numbers until the position was outside of the snake. 
-
+  ```
 
   # Playing the game
 
-  In order to control the snake, the arrow keys are pressed. Each of these keys have event listeneners on and different functions are run depending on the direction that the snake is initiailly moving, the location on the board and the number of lives that the player has. For each key, the following functions can happen (I will use the 'up' arrow key as an example):
+  In order to control the direction in which the snake moves, the arrow keys are pressed. Each of these keys have event listeneners on and different functions are run depending on the direction that the snake is initially moving, the location where the snake is on the board and the number of lives that the player has. For each key pressed, the following events can happen (I will use the 'up' arrow key as an example):
 
-  if (event.key === 'ArrowUp' && (currentDirection !== direction.UP) && (currentDirection !== direction.DOWN)) {
+```
+   if (event.key === 'ArrowUp' && (currentDirection !== direction.UP) && (currentDirection !== direction.DOWN)) {
           clearInterval(snakeInterval)
           snakeInterval = setInterval(() => {
             if (snakeHead < width && liveCount === 1) {
@@ -202,21 +184,43 @@ function showRandomFood() {
               clearInterval(snakeInterval)
 
               return
+            } else if (snakeHead < width && liveCount > 1) {
+              liveReset()
+              renderGame()
+              resetSpeed()
+              clearInterval(snakeInterval)
 
-  This click event is only activated if the snake is currently moving left or right. When activted, the previous interval is cleared (this means that the previous snake movements are cleared and prevents multiple set intervals running simulatenously). 
+
+            } else {
+              snakeUp()
+              growSnake()
+              collision()
+              currentDirection = direction.UP
+            }
+          }, speed)
+```
+
+This key down events are only activated if the snake is currently moving left or right. When activated, the previous `set interval` is cleared (this prevents multiple set intervals running simulatenously). Alternatively, when the snake is moving up/down the board, only the right/left arrow keys are activated. 
+
+As shown above, when the snake is moving left/right across the grid and the up arrow is pressed, the following results can occur: 
+- arrow up results in end of game
+- arrow up results in loss of life
+- arrow up results in snake moving vertically up the board
+- arrow up results in collision with food
 
 
 # Arrow up results in end of game 
-  If the user hits the wall by pressing the up arrow (snakeHead < width && liveCount === 1)) and they only had one life, the game is ended. 
+  If the user hits the wall by pressing the up arrow (`snakeHead < width && liveCount === 1`) and they only had one life, the game is ended. 
 
-  The endGame() function takes the user to results page. Here, the DOM is used to hide the grid and show the user the number of points they scored, whilst giving them the option to play again. The points are displayed by using the DOM to change the inner.HTML of the points (the user scores +100 points for every bit of food eaten). The boolean value of 'playing' is also reassigned to be false. This means that the player is given the option to play again. The other variables that were reassigned during the previous game are also reset in order to return the game to its default settings eg. speed, snake Positions, lives and points. 
+  The `endGame()` function takes the user to results page. Here, the DOM is used to hide the grid and show the user the number of points they scored, whilst giving them the option to play again. The points are displayed by using the DOM to change the `inner.HTML` of the points (the user scores +100 points for every bit of food eaten). The boolean value of 'playing' is also reassigned to be false. This means that the player is given the option to play again. The other variables that were reassigned during the previous game are also reset in order to return the game to its default settings eg. speed, snake positions, lives and points. 
 
   # Arrow up results in loss of life 
 
   If the user hits the wall by pressing the up arrow and they have more than one life. They lose a life, return to the default speed and the snake position gets set to the default position (this makes use of the render game function). 
 
-  As shown below, the liveReset() function revoves one of the players 3 lives and updates the live count in the inner.HTML of the live count display box. Every time the user loses a life, the snake game is reset so that the user starts again from the middle of the board. The direction is also set to its default value (none), and the music which signifies a collision is played. 
+  As shown below, the `liveReset()` function revoves one of the players 3 lives and updates the live count in the `inner.HTML` of the live count display box. Every time the user loses a life, the snake game is reset so that the user starts again from the middle of the board. The direction is also set to its default value (none) and the music which signifies a collision is played. 
 
+  ```
   function liveReset() {
       liveCount -= 1
       lives.innerHTML = 'Lives: ' + liveCount
@@ -226,10 +230,12 @@ function showRandomFood() {
       clearInterval(snakeInterval)
       playLostMusic()
     }
+```
 
 # Arrow up results in snake moving up
   If the user safely clicks the arrow up button whilst travelling left or right, the snake moves around the corner in order to transition from moving horizontally to moving vertically:
 
+  ```
   function snakeUp() {
       snakeHead = snakePositions[snakePositions.length - 1] - width
       snakePositions.shift()
@@ -237,10 +243,11 @@ function showRandomFood() {
 
       renderGame()
     }
+```
 
-In the function above, the snakeHead is defined as the final value in the snake positions array - width (this pushes the snake head to its corresponding position in the row above). The first element in the array is then removed (shift) and the new snake position is pushed into the array. This movement happens with every speed interval and the snake moves around the corner into a vertical position unless another arrow key is pressed. Again, the renderGame() function is used as this allows the snake Positions to be updated over time. 
+A particular challenge of this project was calculating how best to change the direction of the snake so that when the snake head moved round the corner, the rest of the body followed. In this example, to move the snake up, the first element in the snake positions array (the back of the snake) was removed (`snakePositions.shift()`) and a new position was added to the front of the array (`snakePositions.push(snakeHead)`). This occurs with every set interval and therefore, the snake appears to move around the corner until it is moving vertically, unless another arrow key is pressed. 
 
-Additionally, the growSnake() function is called. This detects whether the snake collides with the food and if so, will play the sound assocaited with this collision, grow the snake by one square, add 100 to the points score and update it accordingly, increase the speed of the snake and also regenerate another piece of food randomely on the board. 
+Additionally, the `growSnake()` function is called. This detects whether the snake collides with the food and if so, will play the sound associated with this collision, grow the snake by one square, add 100 to the points score, increase the speed of the snake and also regenerate another piece of food randomely on the board. 
 
 # Set intervals 
 
@@ -248,20 +255,24 @@ All of these functions run with set intervals which run in accordance to the spe
 
 # Music
 
-I chose to add sounds to my game which I found online, downloaded and linked to the document. In order to ensure that when the game was played again, the song started from the beginning, I used the introMusic.currentTime = 0. 
+I chose to add sounds to my game which I found online, downloaded and linked to the document. In order to ensure that when the game was played again, the song started from the beginning, I used the `introMusic.currentTime = 0`. 
 
-# What went well
+# Lessons learnt
 
-This project gave me the opportunity to combine everything I had learnt in the first 3 weeks of this course into one project. I became more confident at learning how to debug my code by testing code using console.log, using CSS animations and working with the DOM to provide interactive webpages that respond to the user. 
+This project gave me the opportunity to combine everything I had learnt in the first 3 weeks of this course into one project. I became more confident at learning how to debug code, using CSS animations and working with the DOM to provide interactive webpages that respond to the user. Additionally, I learnt the importance of testing every time you add additional features and the importace of using `console.log` to debug code. I developed my ability to plan a project and work to meet deadlines. Furthermore, I learnt how to present and explain code to the other members of my cohort. 
 
-  # Improvements: 
+# Bugs
 
- 
+- The snake is only able to move right/up/down at the start. To combat this in the future, I may add a default intial movement which causes the snake to move to the right when the user clicks 'play'. 
+- Occasionally when food is eaten and the length of the snake increases, the extra cell is added in the incorrect place. 
+
+# Potential Future Features
+
+- Mobile Compatability
+- Multiple levels
+- Boxes explaining instructions to the player
 
 
-  - adding the food to the snake
-  - a box popping up which tells the plaeyers to move the keys to start
-  - a default move right direction
 
 
 
