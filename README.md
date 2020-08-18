@@ -53,7 +53,7 @@ The app must:
 When the player initially loads the page, the grid is hidden and a clickable button gives the user the option to play the game. On this page, I created a neon-glow effect by using animations and shadows in CSS to give the effect of the words pulsating on the page. Additionally, to create the effect of a snake moving and following each other around the page, I created animated divs which moved around the page for different durations. Although I thought the impact of this was visually effective, on reflection, I would have thought of a more efficent way to design this animation. 
 
 
-![loadingPage](../load.png)
+![loadingPage](load.png)
 
 
 ```
@@ -127,7 +127,7 @@ playButton.addEventListener('click', () => {
 
 ```
 
-![playingPage](../play.png)
+![playingPage](play.png)
 
 
 
